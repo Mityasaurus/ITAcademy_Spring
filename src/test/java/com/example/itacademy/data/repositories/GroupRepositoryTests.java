@@ -43,7 +43,7 @@ public class GroupRepositoryTests {
 
     @Test
     @Order(3)
-    public void getAll(){
+    public void getAll() {
         List<Group> all = groupRepository.findAll();
         Assertions.assertEquals(2, all.size());
         Assertions.assertIterableEquals(List.of(a, b), all);
@@ -51,7 +51,7 @@ public class GroupRepositoryTests {
 
     @Test
     @Order(4)
-    public void update(){
+    public void update() {
         a.setName("new a");
         a.setCurrentYear(4);
         Group saved = groupRepository.save(a);
@@ -60,7 +60,7 @@ public class GroupRepositoryTests {
 
     @Test
     @Order(5)
-    public void deleteById(){
+    public void deleteById() {
         groupRepository.deleteById(b.getId());
         List<Group> all = groupRepository.findAll();
         Assertions.assertEquals(1, all.size());
@@ -69,7 +69,7 @@ public class GroupRepositoryTests {
 
     @Test
     @Order(6)
-    public void deleteAll(){
+    public void deleteAll() {
         groupRepository.deleteAll();
         List<Group> all = groupRepository.findAll();
         Assertions.assertEquals(0, all.size());

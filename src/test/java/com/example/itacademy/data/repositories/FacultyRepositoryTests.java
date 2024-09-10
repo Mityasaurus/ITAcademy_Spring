@@ -17,7 +17,7 @@ public class FacultyRepositoryTests {
     @Autowired
     private FacultyRepository facultyRepository;
 
-//    @Test
+    //    @Test
     public void save() {
 //        System.out.println(facultyRepository);
         Faculty saved_a = facultyRepository.save(a);
@@ -28,7 +28,7 @@ public class FacultyRepositoryTests {
 
     @Test
     @Order(1)
-    public void saveAll(){
+    public void saveAll() {
         Faculty saved_a = facultyRepository.save(a);
         Faculty saved_b = facultyRepository.save(b);
         a.setId(saved_a.getId());
@@ -39,25 +39,24 @@ public class FacultyRepositoryTests {
 
     @Test
     @Order(2)
-    public void findById(){
+    public void findById() {
         Optional<Faculty> container_find_a = facultyRepository.findById(a.getId());
         if (container_find_a.isPresent()) {
             Assertions.assertEquals(a, container_find_a.get());
-        }
-        else{
+        } else {
             Assertions.fail();
         }
     }
 
     @Test
     @Order(3)
-    public void findAllByCount(){
+    public void findAllByCount() {
         Assertions.assertEquals(2, facultyRepository.findAll().size());
     }
 
     @Test
     @Order(4)
-    public void findAllByCollection(){
+    public void findAllByCollection() {
         List<Faculty> original = List.of(a, b);
         List<Faculty> saved = facultyRepository.findAll();
         Assertions.assertIterableEquals(original, saved);
@@ -65,7 +64,7 @@ public class FacultyRepositoryTests {
 
     @Test
     @Order(5)
-    public void deleteAll(){
+    public void deleteAll() {
         facultyRepository.deleteAll();
         int size = facultyRepository.findAll().size();
         Assertions.assertEquals(0, size);
@@ -73,7 +72,7 @@ public class FacultyRepositoryTests {
 
     @Test
     @Order(6)
-    public void findByNameTest(){
+    public void findByNameTest() {
         Faculty saved_a = facultyRepository.save(a);
         Faculty actual = facultyRepository.findByName(saved_a.getName());
         System.out.println(actual);

@@ -1,7 +1,6 @@
 package com.example.itacademy.data.repositories;
 
 import com.example.itacademy.models.Payment;
-import com.example.itacademy.models.Payment;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,7 +45,7 @@ public class PaymentRepositoryTests {
 
     @Test
     @Order(3)
-    public void getAll(){
+    public void getAll() {
         List<Payment> all = paymentRepository.findAll();
         Assertions.assertEquals(2, all.size());
         Assertions.assertIterableEquals(List.of(a, b), all);
@@ -54,7 +53,7 @@ public class PaymentRepositoryTests {
 
     @Test
     @Order(4)
-    public void update(){
+    public void update() {
         a.setPaymentAmount(1200);
         a.setYearNumber(20);
         Payment saved = paymentRepository.save(a);
@@ -63,7 +62,7 @@ public class PaymentRepositoryTests {
 
     @Test
     @Order(5)
-    public void deleteById(){
+    public void deleteById() {
         paymentRepository.deleteById(b.getId());
         List<Payment> all = paymentRepository.findAll();
         Assertions.assertEquals(1, all.size());
@@ -72,7 +71,7 @@ public class PaymentRepositoryTests {
 
     @Test
     @Order(6)
-    public void deleteAll(){
+    public void deleteAll() {
         paymentRepository.deleteAll();
         List<Payment> all = paymentRepository.findAll();
         Assertions.assertEquals(0, all.size());

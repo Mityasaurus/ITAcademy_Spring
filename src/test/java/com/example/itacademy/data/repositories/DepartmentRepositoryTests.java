@@ -43,7 +43,7 @@ public class DepartmentRepositoryTests {
 
     @Test
     @Order(3)
-    public void getAll(){
+    public void getAll() {
         List<Department> all = departmentRepository.findAll();
         Assertions.assertEquals(2, all.size());
         Assertions.assertIterableEquals(List.of(a, b), all);
@@ -51,7 +51,7 @@ public class DepartmentRepositoryTests {
 
     @Test
     @Order(4)
-    public void update(){
+    public void update() {
         a.setName("new a");
         a.setPhone("new a");
         Department saved = departmentRepository.save(a);
@@ -60,7 +60,7 @@ public class DepartmentRepositoryTests {
 
     @Test
     @Order(5)
-    public void deleteById(){
+    public void deleteById() {
         departmentRepository.deleteById(b.getId());
         List<Department> all = departmentRepository.findAll();
         Assertions.assertEquals(1, all.size());
@@ -69,7 +69,7 @@ public class DepartmentRepositoryTests {
 
     @Test
     @Order(6)
-    public void deleteAll(){
+    public void deleteAll() {
         departmentRepository.deleteAll();
         List<Department> all = departmentRepository.findAll();
         Assertions.assertEquals(0, all.size());
