@@ -1,12 +1,15 @@
 package com.example.itacademy.data.repositories;
 
+import ch.qos.logback.core.net.server.Client;
 import com.example.itacademy.models.Student;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -70,11 +73,23 @@ public class StudentRepositoryTests {
         Assertions.assertEquals(a, all.getFirst());
     }
 
-    @Test
+//    @Test
     @Order(6)
     public void deleteAll() {
         studentRepository.deleteAll();
         List<Student> all = studentRepository.findAll();
         Assertions.assertEquals(0, all.size());
+    }
+
+    @Test
+    @Order(7)
+    @Transactional
+    public void test(){
+        List<Student> studentList = studentRepository.findByEmail("new a");
+        System.out.println(studentList);
+        long count = studentRepository.countByAgeBetween(18, 120);
+        System.out.println(count);
+        Stream<Student> stream = studentRepository.findByAgeNot(21);
+        stream.forEach(System.out::println);
     }
 }

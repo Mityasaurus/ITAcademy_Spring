@@ -20,4 +20,9 @@ public class Department {
     private String name;
     @Column(length = 15, nullable = false, unique = true)
     private String phone;
+    //
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "faculty_id", nullable = false, foreignKey =
+    @ForeignKey(name = "FK_departments_faculties"))
+    private Faculty faculty;
 }

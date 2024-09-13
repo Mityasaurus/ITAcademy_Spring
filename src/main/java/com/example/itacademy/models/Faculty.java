@@ -3,6 +3,8 @@ package com.example.itacademy.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,4 +20,7 @@ public class Faculty {
     private Integer id;
     @Column(length = 50, nullable = false, unique = true)
     private String name;
+    //
+    @OneToMany(mappedBy = "faculty", fetch = FetchType.LAZY)
+    private List<Department> departments;
 }
