@@ -11,8 +11,8 @@ import java.util.Optional;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DepartmentRepositoryTests {
-    public static Department a = new Department(0, "a", "a");
-    public static Department b = new Department(0, "b", "b");
+    public static Department a = new Department(0, "a", "a", null, null);
+    public static Department b = new Department(0, "b", "b", null, null);
 
     @Autowired
     private DepartmentRepository departmentRepository;

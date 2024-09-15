@@ -13,8 +13,8 @@ import java.util.Optional;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PaymentRepositoryTests {
-    public static Payment a = new Payment(0, 100, Date.valueOf(LocalDate.now()), 1);
-    public static Payment b = new Payment(0, 200, Date.valueOf(LocalDate.now()), 2);
+    public static Payment a = new Payment(0, 100, Date.valueOf(LocalDate.now()), 1, null);
+    public static Payment b = new Payment(0, 200, Date.valueOf(LocalDate.now()), 2, null);
 
     @Autowired
     private PaymentRepository paymentRepository;

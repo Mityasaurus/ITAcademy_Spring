@@ -14,8 +14,8 @@ import java.util.stream.Stream;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class StudentRepositoryTests {
-    public static Student a = new Student(0, "a", "b", 19, "a", "a");
-    public static Student b = new Student(0, "b", "b", 20, "b", "b");
+    public static Student a = new Student(0, "a", "b", 19, "a", "a", null, null);
+    public static Student b = new Student(0, "b", "b", 20, "b", "b", null, null);
 
     @Autowired
     private StudentRepository studentRepository;

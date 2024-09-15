@@ -21,6 +21,6 @@ public class Faculty {
     @Column(length = 50, nullable = false, unique = true)
     private String name;
     //
-    @OneToMany(mappedBy = "faculty", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "faculty", fetch = FetchType.EAGER)
     private List<Department> departments;
 }

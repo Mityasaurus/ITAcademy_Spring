@@ -23,10 +23,10 @@ public class Department {
     @Column(length = 15, nullable = false, unique = true)
     private String phone;
     //
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "faculty_id", nullable = false, foreignKey =
     @ForeignKey(name = "FK_departments_faculties"))
     private Faculty faculty;
-    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
     private List<Group> groups;
 }

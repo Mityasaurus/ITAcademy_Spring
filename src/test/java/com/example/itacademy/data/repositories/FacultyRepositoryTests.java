@@ -1,18 +1,20 @@
 package com.example.itacademy.data.repositories;
 
+import com.example.itacademy.models.Department;
 import com.example.itacademy.models.Faculty;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FacultyRepositoryTests {
-    private static Faculty a = new Faculty(0, "a");
-    private static Faculty b = new Faculty(0, "b");
+    private static Faculty a = new Faculty(0, "a", List.of());
+    private static Faculty b = new Faculty(0, "b", List.of());
 
     @Autowired
     private FacultyRepository facultyRepository;

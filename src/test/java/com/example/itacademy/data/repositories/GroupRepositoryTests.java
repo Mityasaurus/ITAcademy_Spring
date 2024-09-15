@@ -11,8 +11,8 @@ import java.util.Optional;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GroupRepositoryTests {
-    public static Group a = new Group(0, "a", 1);
-    public static Group b = new Group(0, "b", 2);
+    public static Group a = new Group(0, "a", 1, null, null);
+    public static Group b = new Group(0, "b", 2, null, null);
 
     @Autowired
     private GroupRepository groupRepository;
