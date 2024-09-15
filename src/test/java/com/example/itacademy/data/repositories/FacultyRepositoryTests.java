@@ -13,8 +13,8 @@ import java.util.Optional;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FacultyRepositoryTests {
-    private static Faculty a = new Faculty(0, "a", List.of());
-    private static Faculty b = new Faculty(0, "b", List.of());
+    private static Faculty a = new Faculty(0, "a", null);
+    private static Faculty b = new Faculty(0, "b", null);
 
     @Autowired
     private FacultyRepository facultyRepository;

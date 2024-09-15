@@ -23,10 +23,14 @@ public class Group {
     @Column(nullable = false)
     private Integer currentYear;
     //
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id", nullable = false, foreignKey =
     @ForeignKey(name = "FK_groups_departments"))
     private Department department;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     private List<Student> students;
 }

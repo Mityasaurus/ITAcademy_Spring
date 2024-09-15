@@ -29,10 +29,14 @@ public class Student {
     @Column(length = 15, nullable = false, unique = true)
     private String phone;
     //
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id", nullable = false, foreignKey =
     @ForeignKey(name = "FK_students_groups"))
     private Group group;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<Payment> payments;
 }

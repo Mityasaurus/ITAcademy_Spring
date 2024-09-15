@@ -21,6 +21,8 @@ public class Faculty {
     @Column(length = 50, nullable = false, unique = true)
     private String name;
     //
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "faculty", fetch = FetchType.EAGER)
     private List<Department> departments;
 }

@@ -25,6 +25,8 @@ public class Payment {
     @Column(nullable = false)
     private Integer yearNumber;
     //
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id", nullable = false, foreignKey =
     @ForeignKey(name = "FK_payments_students"))
