@@ -24,4 +24,9 @@ public class Payment {
     private Date paymentDate;
     @Column(nullable = false)
     private Integer yearNumber;
+    //
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = false, foreignKey =
+    @ForeignKey(name = "FK_payments_students"))
+    private Student student;
 }

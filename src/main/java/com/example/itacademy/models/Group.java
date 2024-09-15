@@ -3,6 +3,8 @@ package com.example.itacademy.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,4 +22,11 @@ public class Group {
     private String name;
     @Column(nullable = false)
     private Integer currentYear;
+    //
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false, foreignKey =
+    @ForeignKey(name = "FK_groups_departments"))
+    private Department department;
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    private List<Student> students;
 }

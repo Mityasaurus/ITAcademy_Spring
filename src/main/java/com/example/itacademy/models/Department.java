@@ -3,6 +3,8 @@ package com.example.itacademy.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,4 +27,6 @@ public class Department {
     @JoinColumn(name = "faculty_id", nullable = false, foreignKey =
     @ForeignKey(name = "FK_departments_faculties"))
     private Faculty faculty;
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+    private List<Group> groups;
 }
