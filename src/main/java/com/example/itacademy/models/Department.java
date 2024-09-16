@@ -8,6 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
@@ -17,20 +18,23 @@ import java.util.List;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NonNull
     private Integer id;
     @Column(nullable = false, unique = true)
+    @NonNull
     private String name;
     @Column(length = 15, nullable = false, unique = true)
+    @NonNull
     private String phone;
     //
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "faculty_id", nullable = false, foreignKey =
     @ForeignKey(name = "FK_departments_faculties"))
     private Faculty faculty;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     private List<Group> groups;
 }
