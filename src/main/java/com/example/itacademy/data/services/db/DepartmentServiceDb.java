@@ -16,8 +16,8 @@ public class DepartmentServiceDb implements DepartmentService {
     private DepartmentRepository departmentRepository;
 
     @Override
-    public Department save(Department Department) {
-        return departmentRepository.save(Department);
+    public Department save(Department department) {
+        return departmentRepository.save(department);
     }
 
     @Override
@@ -39,12 +39,12 @@ public class DepartmentServiceDb implements DepartmentService {
     }
 
     @Override
-    public Department update(Department Department) {
-        Optional<Department> optional = findById(Department.getId());
+    public Department update(Department department) {
+        Optional<Department> optional = findById(department.getId());
         if(optional.isEmpty()){
             System.err.println("Department not found");
         }
-        return departmentRepository.save(Department);
+        return departmentRepository.save(department);
     }
 
     @Override

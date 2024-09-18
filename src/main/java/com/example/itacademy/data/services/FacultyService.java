@@ -14,7 +14,7 @@ public interface FacultyService {
 
     List<Faculty> findAll();
 
-    Faculty update(Faculty a);
+    Faculty update(Faculty faculty);
 
     void deleteById(@NonNull Integer id);
 

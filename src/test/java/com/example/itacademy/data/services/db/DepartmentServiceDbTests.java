@@ -41,9 +41,9 @@ public class DepartmentServiceDbTests {
     @Test
     @Order(3)
     public void findAll(){
-        List<Department> faculties = departmentService.findAll();
-        Assertions.assertEquals(2, faculties.size());
-        Assertions.assertIterableEquals(List.of(a, b), faculties);
+        List<Department> departments = departmentService.findAll();
+        Assertions.assertEquals(2, departments.size());
+        Assertions.assertIterableEquals(List.of(a, b), departments);
     }
 
     @Test
@@ -59,16 +59,16 @@ public class DepartmentServiceDbTests {
     @Order(5)
     public void deleteById(){
         departmentService.deleteById(a.getId());
-        List<Department> faculties = departmentService.findAll();
-        Assertions.assertEquals(1, faculties.size());
-        Assertions.assertEquals(b, faculties.getFirst());
+        List<Department> departments = departmentService.findAll();
+        Assertions.assertEquals(1, departments.size());
+        Assertions.assertEquals(b, departments.getFirst());
     }
 
     @Test
     @Order(6)
     public void deleteAll(){
         departmentService.deleteAll();
-        List<Department> faculties = departmentService.findAll();
-        Assertions.assertEquals(0, faculties.size());
+        List<Department> departments = departmentService.findAll();
+        Assertions.assertEquals(0, departments.size());
     }
 }

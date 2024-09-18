@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DepartmentService {
-    Department save(Department Department);
+    Department save(Department department);
 
     Optional<Department> findById(@NonNull Integer id);
 
     List<Department> findAll();
 
-    Department update(Department a);
+    Department update(Department department);
 
     void deleteById(@NonNull Integer id);
 
