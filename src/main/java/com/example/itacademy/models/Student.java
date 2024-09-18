@@ -39,7 +39,7 @@ public class Student {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id", nullable = false, foreignKey =
+    @JoinColumn(name = "group_id", foreignKey =
     @ForeignKey(name = "FK_students_groups"))
     private Group group;
     @ToString.Exclude

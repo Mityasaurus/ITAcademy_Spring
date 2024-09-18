@@ -30,7 +30,7 @@ public class Group {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id", nullable = false, foreignKey =
+    @JoinColumn(name = "department_id", foreignKey =
     @ForeignKey(name = "FK_groups_departments"))
     private Department department;
     @ToString.Exclude
