@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "a",
+    "departments": [
+      {
+        "id": 1,
+        "name": "a",
+        "phone": "111",
+        "groups": []
+      },
+      {
+        "id": 2,
+        "name": "b",
+        "phone": "222",
+        "groups": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "b",
+    "departments": [
+      {
+        "id": 3,
+        "name": "c",
+        "phone": "333",
+        "groups": []
+      }
+    ]
+  }
+]
