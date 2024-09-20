@@ -19,4 +19,6 @@ public interface FacultyService {
     void deleteById(@NonNull Integer id);
 
     void deleteAll();
+
+    List<Faculty> saveAll(List<Faculty> faculties);
 }

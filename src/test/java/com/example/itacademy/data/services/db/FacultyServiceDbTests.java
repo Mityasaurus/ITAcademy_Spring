@@ -1,6 +1,7 @@
 package com.example.itacademy.data.services.db;
 
 import com.example.itacademy.data.services.FacultyService;
+import com.example.itacademy.data.services.qualifiers.FacultyServiceDbQualifier;
 import com.example.itacademy.models.Faculty;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,15 @@ import java.util.Optional;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FacultyServiceDbTests {
-    private static Faculty a = new Faculty(0, "a");
+//    private static Faculty a = new Faculty(0, "a");
+    @Autowired
+    private Faculty a;
     private static Faculty b = new Faculty(0, "b");
 
     @Autowired
+    //@Qualifier("clientServiceDb")
+    //@FacultyServiceQualifier
+    @FacultyServiceDbQualifier
     FacultyService facultyService;
 
     @Test

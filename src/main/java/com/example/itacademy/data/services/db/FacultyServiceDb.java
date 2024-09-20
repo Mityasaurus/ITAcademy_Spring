@@ -60,4 +60,9 @@ public class FacultyServiceDb implements FacultyService{
     public void deleteAll() {
         facultyRepository.deleteAll();
     }
+
+    @Override
+    public List<Faculty> saveAll(List<Faculty> faculties) {
+        return facultyRepository.saveAll(faculties);
+    }
 }

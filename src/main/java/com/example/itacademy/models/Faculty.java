@@ -26,6 +26,6 @@ public class Faculty {
     //
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "faculty", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "faculty", fetch = FetchType.EAGER)
     private List<Department> departments;
 }

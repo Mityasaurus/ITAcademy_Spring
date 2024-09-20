@@ -7,6 +7,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +60,10 @@ public class DepartmentServiceDb implements DepartmentService {
     @Override
     public void deleteAll() {
         departmentRepository.deleteAll();
+    }
+
+    @Override
+    public List<Department> saveAll(List<Department> departmentList) {
+        return departmentRepository.saveAll(departmentList);
     }
 }

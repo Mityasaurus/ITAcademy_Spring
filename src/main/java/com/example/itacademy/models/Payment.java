@@ -32,7 +32,7 @@ public class Payment {
     //
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id", foreignKey =
     @ForeignKey(name = "FK_payments_students"))
     private Student student;
