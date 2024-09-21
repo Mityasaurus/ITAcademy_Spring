@@ -9,6 +9,7 @@ import com.example.itacademy.models.Faculty;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.List;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FacultyServiceJsonTest {
+
     @Autowired
     private ArrayList<Faculty> facultyList;
 
@@ -36,55 +38,63 @@ public class FacultyServiceJsonTest {
 
     @Test
     @Order(1)
-    public void saveFaculties(){
-        List<Faculty> savedList = facultyServiceDb.saveAll(facultyList);
-        Assertions.assertIterableEquals(savedList, facultyServiceDb.findAll());
-        facultyList = new ArrayList<>(savedList);
+    public void saveFaculties() {
+        List<Faculty> saved = facultyServiceDb.saveAll(facultyList);
+        Assertions.assertIterableEquals(saved, facultyServiceDb.findAll());
     }
 
     @Test
     @Order(2)
-    public void saveDepartments(){
-        List<Department> savedList = departmentServiceDb.saveAll(departmentList);
-        Assertions.assertIterableEquals(savedList, departmentServiceDb.findAll());
-        departmentList = new ArrayList<>(savedList);
+    public void saveDepartments() {
+        List<Department> saved = departmentServiceDb.saveAll(departmentList);
+        Assertions.assertIterableEquals(saved, departmentServiceDb.findAll());
     }
 
+    //Для режиму fetch = FetchType.LAZY
+    @Transactional
+    //Для збереження даних в базі після завершення тесту
+    @Commit
     @Test
     @Order(3)
-    @Transactional
-    public void updateFaculties(){
-        facultyList = new ArrayList<>(facultyServiceDb.findAll());
-        departmentList = new ArrayList<>(departmentServiceDb.findAll());
+    public void updateDepartments() {
+        List<Faculty> faculties = facultyServiceDb.findAll();
+        List<Department> departments = departmentServiceDb.findAll();
 
-        facultyList.getFirst().setDepartments(new ArrayList<>(List.of(
-                departmentList.getFirst(),
-                departmentList.get(1)
-        )));
-        facultyList.get(1).setDepartments(new ArrayList<>(List.of(
-                departmentList.get(2)
-        )));
+        departments.get(0).setFaculty(faculties.get(0));
+        departments.get(1).setFaculty(faculties.get(0));
+        departments.get(2).setFaculty(faculties.get(1));
 
-        facultyServiceDb.saveAll(facultyList);
-        facultyList = new ArrayList<>(facultyServiceDb.findAll());
+        List<Department> saved = departmentServiceDb.saveAll(departments);
+        Assertions.assertIterableEquals(departments, saved);
 
-        facultyServiceJson.saveAll(facultyList);
+        saved.forEach(department -> {
+            System.err.println(department);
+            System.err.println(department.getFaculty());
+        });
     }
 
-//    @Test
-//    @Order(4)
-//    @Transactional
-//    public void exportJson(){
-//        facultyList = new ArrayList<>(facultyServiceDb.findAll());
-//
-//        facultyList.forEach(faculty -> faculty.getDepartments().size());
-//
-//        facultyServiceJson.saveAll(facultyList);
-//    }
+    @Transactional
+    @Test
+    @Order(4)
+    public void toJson() {
+        List<Faculty> faculties = facultyServiceDb.findAll();
+
+        faculties.forEach(faculty -> {
+            System.err.println(faculty);
+            System.err.println(faculty.getDepartments());
+            faculty.getDepartments().forEach(department -> {
+                System.err.println(department.getFaculty());
+                System.err.println();
+            });
+        });
+
+        List<Faculty> saved = facultyServiceJson.saveAll(faculties);
+        Assertions.assertIterableEquals(faculties, saved);
+    }
 
     @Test
     @Order(5)
-    public void fromJson(){
+    public void fromJson() {
         List<Faculty> faculties = facultyServiceJson.findAll();
         System.err.println(faculties);
         System.err.println(faculties.getFirst().getDepartments());
