@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Students</h1>
+    <div id="studentForm">
+        <form action="studentForm" method="post">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="lastname" placeholder="Lastname">
+            <input type="number" name="age" placeholder="Age" min="1" max="99">
+            <input type="email" name="email" placeholder="Email">
+            <input type="tel" name="phone" placeholder="Phone">
+            <input type="submit" name="submit" value="Save">
+        </form>
+    </div>
+    <div id="studentTable">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        {{#students}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{lastname}}</td>
+            <td>{{age}}</td>
+            <td>{{email}}</td>
+            <td>{{phone}}</td>
+        </tr>
+        {{/students}}
+    </table>
+
+    </div>
+
+</body>
+</html>
