@@ -31,11 +31,11 @@ public class GroupServiceDb implements GroupService {
 
     @Override
     public List<Group> findAll() {
-        List<Group> Groups = groupRepository.findAll();
-        if(Groups.isEmpty()){
+        List<Group> groups = groupRepository.findAll();
+        if(groups.isEmpty()){
             System.err.println("Group list empty");
         }
-        return Groups;
+        return groups;
     }
 
     @Override
