@@ -18,14 +18,14 @@ public class MainController {
 //    @RequestMapping(method = {RequestMethod.GET}, path = "/")
     @GetMapping("/")
     public String load(){
-        return "redirect:students";
+        return "redirect:programnews";
     }
 
     @GetMapping("students")
     public String loadStudents(Model model){
         List<Student> list = studentService.findAll();
         model.addAttribute("students", list);
-        return "main";
+        return "students";
     }
 
 //    @PostMapping("studentForm")

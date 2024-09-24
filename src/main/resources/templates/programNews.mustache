@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>News</h1>
+    <div id="programNewsForm">
+        <form action="programNewsForm" method="post">
+            <input type="text" name="title" placeholder="Title">
+            <input type="text" name="content" placeholder="Content">
+            <input type="submit" name="submit" value="Save">
+        </form>
+    </div>
+    <div id="programNewsTable">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+        </tr>
+        {{#programNews}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+            <td>{{createdAt}}</td>
+            <td>{{updatedAt}}</td>
+        </tr>
+        {{/programNews}}
+    </table>
+
+    </div>
+
+</body>
+</html>
