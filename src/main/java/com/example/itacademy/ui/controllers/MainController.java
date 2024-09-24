@@ -11,41 +11,9 @@ import java.util.List;
 
 @Controller
 public class MainController {
-
-    @Autowired
-    StudentService studentService;
-
 //    @RequestMapping(method = {RequestMethod.GET}, path = "/")
     @GetMapping("/")
     public String load(){
-        return "redirect:programnews";
-    }
-
-    @GetMapping("students")
-    public String loadStudents(Model model){
-        List<Student> list = studentService.findAll();
-        model.addAttribute("students", list);
-        return "students";
-    }
-
-//    @PostMapping("studentForm")
-    public String studentForm1(
-            @RequestParam("name") String name,
-            @RequestParam("lastname") String lastname,
-            @RequestParam("age") int age,
-            @RequestParam("phone") String phone,
-            @RequestParam("email") String email
-    ){
-        Student student = new Student(0, name, lastname, age, email, phone);
-        System.err.println(student);
-
-        return "redirect:";
-    }
-
-    @PostMapping("studentForm")
-    public String studentForm2(@ModelAttribute("student") Student student){
-        System.err.println(student);
-        studentService.save(student);
-        return "redirect:";
+        return "redirect:students";
     }
 }

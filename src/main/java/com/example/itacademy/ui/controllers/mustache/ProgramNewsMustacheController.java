@@ -1,4 +1,4 @@
-package com.example.itacademy.ui.controllers;
+package com.example.itacademy.ui.controllers.mustache;
 
 import com.example.itacademy.data.services.ProgramNewsService;
 import com.example.itacademy.models.ProgramNews;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
-public class ProgramNewsController {
+public class ProgramNewsMustacheController {
     @Autowired
     ProgramNewsService programNewsService;
 
@@ -21,7 +21,7 @@ public class ProgramNewsController {
     public String index(Model model){
         List<ProgramNews> list = programNewsService.findAll();
         model.addAttribute("programNews", list);
-        return "programNews";
+        return "mustache/programNews";
     }
 
     @PostMapping("programNewsForm")

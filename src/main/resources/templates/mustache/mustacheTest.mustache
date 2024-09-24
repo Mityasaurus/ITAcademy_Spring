@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>Mustache Test</title>
+</head>
+<body>
+    <div>
+        <p>Variable</p>
+        <p>Value: {{variable}}</p>
+    </div>
+    <div>
+        <p>HTML</p>
+        <div>{{html_content}}</div>
+        <div>{{{html_content}}}</div>
+    </div>
+    <div>
+        <p>Conditions section (If)</p>
+        {{# isAdmin }}
+            <p>Hello Admin!</p>
+        {{/ isAdmin }}
+    </div>
+    <div>
+        <p>Inverted section (If(!condition))</p>
+        
+        {{^ isAdmin }}
+            <p>Hello User!</p>
+        {{/ isAdmin }}
+    </div>
+    <div>
+        <p>Cycle</p>
+        <table border="1">
+        {{# list }}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{phone}}</td>
+            </tr>
+        {{/ list }}
+        </table>
+    </div>
+    <div>
+        {{>mustache/students}}
+    </div>
+    <div>
+        <p>Comment</p>
+        {{!comment}}
+    </div>
+</body>
+</html>

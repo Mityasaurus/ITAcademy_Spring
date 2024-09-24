@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students</title>
+  </head>
+  <body>
+    <div>
+      <form th:action="@{/addStudentForm}" method="post">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="submit" value="Save" />
+      </form>
+    </div>
+  </body>
+</html>
