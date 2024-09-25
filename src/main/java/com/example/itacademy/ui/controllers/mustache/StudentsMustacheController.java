@@ -24,7 +24,7 @@ public class StudentsMustacheController {
         return "mustache/students";
     }
 
-    //    @PostMapping("studentForm")
+    //    @PostMapping("mustache/studentFormMustache")
     public String studentForm1(
             @RequestParam("name") String name,
             @RequestParam("lastname") String lastname,
@@ -35,13 +35,13 @@ public class StudentsMustacheController {
         Student student = new Student(0, name, lastname, age, email, phone);
         System.err.println(student);
 
-        return "redirect:";
+        return "redirect:students";
     }
 
-    @PostMapping("studentFormMustache")
+    @PostMapping("mustache/studentFormMustache")
     public String studentForm2(@ModelAttribute("student") Student student){
         System.err.println(student);
         studentService.save(student);
-        return "redirect:";
+        return "redirect:students";
     }
 }
