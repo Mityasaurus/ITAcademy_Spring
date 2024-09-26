@@ -9,8 +9,32 @@
     <div>
       <form th:action="@{/addStudentForm}" method="post">
         <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="lastname" placeholder="Lastname" />
+        <input type="number" name="age" placeholder="Age" />
+        <input type="text" name="email" placeholder="Email" />
+        <input type="text" name="phone" placeholder="Phone number" />
         <input type="submit" value="Save" />
       </form>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Lastname</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+        <tr th:each="student:${studentList}">
+          <td th:utext="${student.id}"></td>
+          <td th:utext="${student.name}"></td>
+          <td th:utext="${student.lastname}"></td>
+          <td th:utext="${student.age}"></td>
+          <td th:utext="${student.email}"></td>
+          <td th:utext="${student.phone}"></td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
