@@ -33,6 +33,12 @@
           <td th:utext="${student.age}"></td>
           <td th:utext="${student.email}"></td>
           <td th:utext="${student.phone}"></td>
+          <td>
+            <form th:action="${studentUpdateRedirect}" method="post">
+              <input type="hidden" name="studentId" th:value="${student.id}" />
+              <input type="submit" value="&#8942;" />
+            </form>
+          </td>
         </tr>
       </table>
     </div>
