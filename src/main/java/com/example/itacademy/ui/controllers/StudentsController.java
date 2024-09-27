@@ -29,4 +29,12 @@ public class StudentsController {
         studentService.save(student);
         return "redirect:students";
     }
+
+    @PostMapping("studentUpdateRedirect")
+    public String studentUpdateRedirect(@RequestParam("studentId") String studentId, Model model){
+        model.addAttribute("studentId", studentId);
+
+        //TODO redirect to update page
+        return "redirect:students";
+    }
 }
