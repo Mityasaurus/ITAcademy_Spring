@@ -5,10 +5,12 @@ import com.example.itacademy.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -31,10 +33,10 @@ public class StudentsController {
     }
 
     @PostMapping("studentUpdateRedirect")
-    public String studentUpdateRedirect(@RequestParam("studentId") String studentId, Model model){
-        model.addAttribute("studentId", studentId);
-
-        //TODO redirect to update page
-        return "redirect:students";
+    public ModelAndView studentUpdateRedirect(@RequestParam("studentId") Integer studentId){
+        return new ModelAndView(
+                "redirect:studentupdate",
+                new ModelMap("studentId", studentId)
+        );
     }
 }
