@@ -1,0 +1,21 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.header {
+  background-color: bisque;
+  margin: 0 auto 20px auto;
+  padding: 20px 10px;
+  height: 30px;
+}
+
+.headerElement {
+  float: left;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.header:last-child {
+  margin-right: 0;
+}
