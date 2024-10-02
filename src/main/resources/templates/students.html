@@ -3,43 +3,72 @@
   <head>
     <th:block th:insert="~{fragments/settingsPage :: settingsFragment }" />
     <title>Students</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
     <th:block th:insert="~{fragments/headerPage :: headerFragment }" />
-    <div>
-      <form th:action="@{/addStudentForm}" method="post">
-        <input type="text" name="name" placeholder="Name" />
-        <input type="text" name="lastname" placeholder="Lastname" />
-        <input type="number" name="age" placeholder="Age" />
-        <input type="text" name="email" placeholder="Email" />
-        <input type="text" name="phone" placeholder="Phone number" />
-        <input type="submit" value="Save" />
+    <div class="form-container">
+      <form th:action="@{/addStudentForm}" method="post" class="student-form">
+        <input type="text" name="name" placeholder="Name" class="input-field" />
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Lastname"
+          class="input-field"
+        />
+        <input type="number" name="age" placeholder="Age" class="input-field" />
+        <input
+          type="text"
+          name="email"
+          placeholder="Email"
+          class="input-field"
+        />
+        <input
+          type="text"
+          name="phone"
+          placeholder="Phone number"
+          class="input-field"
+        />
+        <input type="submit" value="Save" class="submit-button" />
       </form>
     </div>
-    <div>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Lastname</th>
-          <th>Age</th>
-          <th>Email</th>
-          <th>Phone</th>
-        </tr>
-        <tr th:each="student:${studentList}">
-          <td th:utext="${student.id}"></td>
-          <td th:utext="${student.name}"></td>
-          <td th:utext="${student.lastname}"></td>
-          <td th:utext="${student.age}"></td>
-          <td th:utext="${student.email}"></td>
-          <td th:utext="${student.phone}"></td>
-          <td>
-            <form th:action="@{/studentUpdateRedirect}" method="post">
-              <input type="hidden" name="studentId" th:value="${student.id}" />
-              <input type="submit" value="&#8942;" />
-            </form>
-          </td>
-        </tr>
+    <div class="table-container">
+      <table class="student-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="student:${studentList}">
+            <td th:utext="${student.id}"></td>
+            <td th:utext="${student.name}"></td>
+            <td th:utext="${student.lastname}"></td>
+            <td th:utext="${student.age}"></td>
+            <td th:utext="${student.email}"></td>
+            <td th:utext="${student.phone}"></td>
+            <td>
+              <form
+                th:action="@{/studentUpdateRedirect}"
+                method="post"
+                class="action-form"
+              >
+                <input
+                  type="hidden"
+                  name="studentId"
+                  th:value="${student.id}"
+                />
+                <input type="submit" value="&#8942;" class="action-button" />
+              </form>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </body>

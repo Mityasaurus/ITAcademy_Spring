@@ -6,11 +6,12 @@
   </head>
   <body>
     <th:block th:insert="~{fragments/headerPage :: headerFragment }" />
-    <div>
+    <div class="form-container">
       <form
         th:action="@{/studentupdateform}"
         method="post"
         th:object="${student}"
+        class="student-form"
       >
         <input type="hidden" name="id" th:value="${student.id}" />
         <input
@@ -18,33 +19,37 @@
           name="name"
           th:value="${student.name}"
           placeholder="Name"
+          class="input-field"
         />
         <input
           type="text"
           name="lastname"
           th:value="${student.lastname}"
           placeholder="Lastname"
+          class="input-field"
         />
         <input
           type="number"
           name="age"
           th:value="${student.age}"
           placeholder="Age"
+          class="input-field"
         />
         <input
           type="text"
           name="email"
           th:value="${student.email}"
           placeholder="Email"
+          class="input-field"
         />
         <input
           type="text"
           name="phone"
           th:value="${student.phone}"
           placeholder="Phone"
+          class="input-field"
         />
-        <!-- /*1*/ -->
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" class="submit-button" />
       </form>
     </div>
   </body>
