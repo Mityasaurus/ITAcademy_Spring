@@ -12,8 +12,8 @@ import java.util.List;
 @Controller
 public class MainController {
 //    @RequestMapping(method = {RequestMethod.GET}, path = "/")
-    @GetMapping("/")
-    public String load(){
-        return "redirect:students";
-    }
+//    @GetMapping("/")
+//    public String load(){
+//        return "redirect:students";
+//    }
 }
