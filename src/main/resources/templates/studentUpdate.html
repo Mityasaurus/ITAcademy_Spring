@@ -74,7 +74,7 @@
       </form>
     </div>
 
-    <div class="table-container">
+    <div class="table-container" id="payments-table-container">
       <table class="student-table">
         <tr>
           <th>ID</th>
@@ -84,7 +84,8 @@
           <th>Action</th>
         </tr>
         <tr th:each="paymentObj : ${student.payments}">
-          <form action="" method="post" class="action-form">
+          <form action="paymentUpdateForm" class="action-form">
+            <input type="hidden" name="id" th:value="${paymentObj.id}" />
             <td>
               <input
                 type="text"
@@ -115,7 +116,7 @@
               />
             </td>
             <td>
-              <button type="button" id="btnPaymentSave" class="action-button">
+              <button type="submit" id="btnPaymentSave" class="action-button">
                 Save
               </button>
             </td>
