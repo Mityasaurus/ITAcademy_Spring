@@ -49,6 +49,48 @@ body {
   background-color: #4cae4c;
 }
 
+.payment-form-container {
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.payment-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.payment-form input[type="number"],
+.payment-form input[type="date"] {
+  width: calc(100% - 22px);
+}
+
+.payment-form input[type="submit"] {
+  padding: 10px;
+  background-color: #5cb85c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.payment-form input[type="submit"]:hover {
+  background-color: #4cae4c;
+}
+
 .table-container {
   overflow-x: auto;
 }
@@ -62,7 +104,7 @@ body {
 
 .student-table th,
 .student-table td {
-  padding: 10px;
+  padding: 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
@@ -75,12 +117,20 @@ body {
   background-color: #f1f1f1;
 }
 
-.action-form {
-  margin: 0;
+.student-table input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 22px);
 }
 
-.action-button {
-  padding: 5px 10px;
+.student-table input:disabled {
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+}
+
+.student-table button#btnPaymentSave {
+  padding: 7px 15px;
   background-color: #0275d8;
   color: #fff;
   border: none;
@@ -88,8 +138,28 @@ body {
   cursor: pointer;
 }
 
-.action-button:hover {
+.student-table button#btnPaymentSave:hover {
   background-color: #025aa5;
+}
+
+.action-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.action-button:focus {
+  outline: none;
 }
 
 .header {
@@ -168,4 +238,9 @@ body {
 
 .error-container a:hover {
   background-color: #f1b0b7;
+}
+
+.centered-header {
+  text-align: center;
+  margin: 20px 0;
 }
