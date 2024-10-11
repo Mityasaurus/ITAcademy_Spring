@@ -17,12 +17,12 @@ public class UserModel {
     }
 
     public enum Role{
-        GUEST, USER, ADMIN
+        ROLE_USER, ROLE_ADMIN
     }
 
     {
         status = Status.CREATED;
-        role = Role.GUEST;
+        role = Role.ROLE_USER;
     }
 
     @NonNull

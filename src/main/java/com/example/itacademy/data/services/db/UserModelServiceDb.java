@@ -6,6 +6,7 @@ import com.example.itacademy.models.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,10 @@ public class UserModelServiceDb implements UserModelService {
     @Override
     public UserModel save(UserModel userModel){
         return userModelRepository.save(userModel);
+    }
+
+    @Override
+    public List<UserModel> findAll() {
+        return userModelRepository.findAll();
     }
 }

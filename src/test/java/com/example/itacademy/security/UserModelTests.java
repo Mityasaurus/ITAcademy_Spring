@@ -20,6 +20,7 @@ public class UserModelTests {
     public void save(){
         UserModel userModel = new UserModel(0, "a", encoder.encode("a"), "a@t.com");
         userModel.setStatus(UserModel.Status.ACTIVE);
+        userModel.setRole(UserModel.Role.ROLE_ADMIN);
         userModelService.save(userModel);
     }
 }
