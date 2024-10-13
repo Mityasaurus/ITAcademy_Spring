@@ -19,7 +19,6 @@ function updatePayment(form) {
       "Content-Type": "application/json",
     },
     body: json,
-    credentials: "same-origin",
   })
     .then((response) => {
       // console.log(response);

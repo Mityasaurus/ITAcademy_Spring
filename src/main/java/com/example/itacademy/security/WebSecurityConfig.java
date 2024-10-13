@@ -43,6 +43,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/addUserForm/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/rest/**")
+                )
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .logout(LogoutConfigurer::permitAll
                 );
