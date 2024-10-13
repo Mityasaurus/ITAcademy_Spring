@@ -21,10 +21,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserModel> optional = userModelService.findByLogin(username);
         if(optional.isPresent()){
-            System.err.println(optional.get());
             return new UserDetailsImpl(optional.get());
         } 
         System.err.println("User not found!");
-        throw new UsernameNotFoundException("User nor found");
+        throw new UsernameNotFoundException("User not found");
     }
 }

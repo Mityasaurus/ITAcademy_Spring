@@ -39,12 +39,9 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/**").hasRole("ADMIN")
-                        .requestMatchers("/addUserForm/**").hasRole("ADMIN")
+                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/users/**", "/addUserForm/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
-                )
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/rest/**")
                 )
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .logout(LogoutConfigurer::permitAll

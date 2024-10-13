@@ -87,6 +87,7 @@
           <form action="paymentUpdateForm" class="action-form">
             <input type="hidden" name="id" th:value="${paymentObj.id}" />
             <input type="hidden" name="studentId" th:value="${student.id}" />
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
             <td>
               <input
                 type="text"
