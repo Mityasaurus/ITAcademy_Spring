@@ -1,7 +1,9 @@
 package com.example.itacademy.ui.controllers;
 
+import com.example.itacademy.data.services.GroupService;
 import com.example.itacademy.data.services.PaymentService;
 import com.example.itacademy.data.services.StudentService;
+import com.example.itacademy.models.Group;
 import com.example.itacademy.models.Payment;
 import com.example.itacademy.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,15 +28,23 @@ public class StudentUpdateController {
     @Autowired
     PaymentService paymentService;
 
+    @Autowired
+    private GroupService groupService;
+
     @GetMapping("studentupdate")
     public String load(Model model, @RequestParam("studentId") Integer studentId){
         Optional<Student> optionalStudent = studentService.findById(studentId);
         optionalStudent.ifPresent(student -> model.addAttribute("student", student));
+        List<Group> groups = groupService.findAll();
+        model.addAttribute("groupList", groups);
         return "studentUpdate";
     }
 
     @PostMapping("studentupdateform")
-    public String studentUpdateForm(@ModelAttribute("Student") Student student){
+    public String studentUpdateForm(@ModelAttribute("Student") Student student,
+                                    @RequestParam("groupId") Integer groupId){
+        Optional<Group> optionalGroup = groupService.findById(groupId);
+        optionalGroup.ifPresent(student::setGroup);
         studentService.update(student);
         return "redirect:students";
     }

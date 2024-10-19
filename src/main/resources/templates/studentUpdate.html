@@ -49,6 +49,16 @@
           placeholder="Phone"
           class="input-field"
         />
+
+        <select name="groupId" class="input-field">
+          <option
+            th:each="group : ${groupList}"
+            th:value="${group.id}"
+            th:text="${group.name}"
+            th:selected="${group.id == student.group?.id}"
+          ></option>
+        </select>
+
         <input type="submit" value="Save" class="submit-button" />
       </form>
     </div>

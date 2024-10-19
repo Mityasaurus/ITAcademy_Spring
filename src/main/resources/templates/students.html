@@ -28,6 +28,16 @@
           placeholder="Phone number"
           class="input-field"
         />
+
+        <select name="groupId" class="input-field">
+          <option value="" disabled selected>Select group</option>
+          <option
+            th:each="group : ${groupList}"
+            th:value="${group.id}"
+            th:text="${group.name}"
+          ></option>
+        </select>
+
         <input type="submit" value="Save" class="submit-button" />
       </form>
     </div>
@@ -41,6 +51,7 @@
             <th>Age</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Group</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -52,6 +63,7 @@
             <td th:utext="${student.age}"></td>
             <td th:utext="${student.email}"></td>
             <td th:utext="${student.phone}"></td>
+            <td th:utext="${student.group?.name}"></td>
             <td>
               <form
                 th:action="@{/studentUpdateRedirect}"

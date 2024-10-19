@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:insert="~{fragments/settingsPage :: settingsFragment }" />
+    <title>Groups</title>
+  </head>
+  <body>
+    <th:block th:insert="~{fragments/headerPage :: headerFragment }" />
+    <div class="form-container">
+      <form
+        th:action="@{/addStudentGroupForm}"
+        method="post"
+        class="student-form"
+      >
+        <input type="text" name="name" placeholder="Name" class="input-field" />
+        <input
+          type="number"
+          name="currentYear"
+          placeholder="Current Year"
+          class="input-field"
+        />
+        <input type="submit" value="Save" class="submit-button" />
+      </form>
+    </div>
+    <div class="table-container">
+      <table class="student-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Current Year</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="group:${groupList}">
+            <td th:utext="${group.id}"></td>
+            <td th:utext="${group.name}"></td>
+            <td th:utext="${group.currentYear}"></td>
+            <td>
+              <form
+                th:action="@{/studentGroupUpdateRedirect}"
+                method="post"
+                class="action-form"
+              >
+                <input type="hidden" name="groupId" th:value="${group.id}" />
+                <input type="submit" value="&#8942;" class="action-button" />
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

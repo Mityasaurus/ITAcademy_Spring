@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:insert="~{fragments/settingsPage :: settingsFragment }" />
+    <title>Group Update</title>
+  </head>
+  <body th:object="${group}">
+    <th:block th:insert="~{fragments/headerPage :: headerFragment }" />
+    <h1 class="centered-header">Edit Group</h1>
+    <div class="form-container">
+      <form
+        th:action="@{/studentgroupupdateform}"
+        method="post"
+        class="student-form"
+      >
+        <input type="hidden" name="id" th:value="${group.id}" />
+        <input
+          type="text"
+          name="name"
+          th:value="${group.name}"
+          placeholder="Name"
+          class="input-field"
+        />
+        <input
+          type="number"
+          name="currentYear"
+          th:value="${group.currentYear}"
+          placeholder="Current Year"
+          class="input-field"
+        />
+        <input type="submit" value="Save" class="submit-button" />
+      </form>
+    </div>
+
+    <h1 class="centered-header">Students</h1>
+
+    <div class="table-container" id="payments-table-container">
+      <table class="student-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="student:${group.students}">
+            <td th:utext="${student.id}"></td>
+            <td th:utext="${student.name}"></td>
+            <td th:utext="${student.lastname}"></td>
+            <td th:utext="${student.age}"></td>
+            <td th:utext="${student.email}"></td>
+            <td th:utext="${student.phone}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="module" src="js/studentUpdate.js"></script>
+  </body>
+</html>
